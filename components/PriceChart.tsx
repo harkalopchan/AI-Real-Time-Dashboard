@@ -14,8 +14,8 @@ export default function PriceChart({ data }: priceChartProps) {
                 <h2 className="text-lg font-semibold text-white">Price Trend</h2>
                 <p className="text-sm text-slate-400">Static preview with sample intraday data</p>
             </div>
-            <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
+            <div className="h-80 w-full min-w-0">
+                <ResponsiveContainer width="100%" height={320} debounce={0}>
                     <LineChart data={data}>
                         <XAxis dataKey="time" stroke="#94a3b8" tickLine={false} axisLine={false} />
                         <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} />
