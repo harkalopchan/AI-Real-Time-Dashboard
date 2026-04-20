@@ -12,7 +12,7 @@ export default function AskDataPanel() {
                     className="min-h-[120px] w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-500"
                 />
 
-                <button className="rounded-xl bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 transition hover:bg-sky-400">
+                <button className="w-full rounded-xl bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 transition hover:bg-sky-400 sm:w-auto">
                     Ask
                 </button>
             </div>

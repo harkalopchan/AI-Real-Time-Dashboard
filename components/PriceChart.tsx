@@ -1,24 +1,42 @@
 "use client";
 
-import { ChartPoint } from "@/data/dashboard";
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { ReactNode } from "react";
+import { MarketChartPoint } from "@/types/market";
 
-type priceChartProps = {
-    data: ChartPoint[];
+type PriceChartProps = {
+    data: MarketChartPoint[];
+    headerRight?: ReactNode;
+    className?: string;
 }
 
-export default function PriceChart({ data }: priceChartProps) {
+export default function PriceChart({className, data, headerRight }: PriceChartProps) {
     return (
-        <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
-            <div className="mb-4">
-                <h2 className="text-lg font-semibold text-white">Price Trend</h2>
-                <p className="text-sm text-slate-400">Static preview with sample intraday data</p>
+        <div className={`rounded-2xl border border-slate-800 bg-slate-900 p-5 ${className || ""}`}>
+            <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h2 className="text-lg font-semibold text-white">BTC Price Trend</h2>
+                    <p className="text-sm text-slate-400">
+                        Live hourly market data from CoinGecko
+                    </p>
+                </div>
+                {headerRight && <div>{headerRight}</div>}
             </div>
-            <div className="h-80 w-full min-w-0">
-                <ResponsiveContainer width="100%" height={320} debounce={0}>
+            <div className="h-80 w-full">
+                <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={data}>
-                        <XAxis dataKey="time" stroke="#94a3b8" tickLine={false} axisLine={false} />
-                        <YAxis stroke="#94a3b8" tickLine={false} axisLine={false} />
+                        <XAxis
+                            dataKey="time"
+                            stroke="#94a3b8"
+                            tickLine={false}
+                            axisLine={false}
+                        />
+                        <YAxis
+                            stroke="#94a3b8"
+                            tickLine={false}
+                            axisLine={false}
+                            domain={["dataMin - 300", "dataMax + 300"]}
+                        />
                         <Tooltip
                             contentStyle={{
                                 backgroundColor: "#0f172a",
