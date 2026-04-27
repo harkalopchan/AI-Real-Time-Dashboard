@@ -11,12 +11,50 @@ import RangeSelector from "@/components/RangeSelector";
 import { useMarketData } from "@/hooks/useMarketData";
 import { calculateChartStats, filterChartDataByRange, TimeRange } from "@/lib/chart";
 import { buildMetricCards } from "@/lib/market";
-import { use, useMemo, useState } from "react";
+import { AIInsightResponse } from "@/types/ai";
+import { useMemo, useState, useEffect, use } from "react";
 
 export default function HomePage() {
 
   const { data, loading, error } = useMarketData();
   const [selectedRange, setSelectedRange] = useState<TimeRange>("1D");
+  const [aiInsight, setAiInsight] = useState<AIInsightResponse | null>(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [hasFetchedAI, setHasFetchedAI] = useState(false);
+
+  useEffect(() => {
+  if (!data || hasFetchedAI) return;
+
+  async function fetchAI() {
+    try {
+      setAiLoading(true);
+
+      const res = await fetch("/api/ai-insights", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        console.error("AI API error:", result);
+        return;
+      }
+
+      setAiInsight(result);
+      setHasFetchedAI(true);
+    } catch (err) {
+      console.error("AI fetch error:", err);
+    } finally {
+      setAiLoading(false);
+    }
+  }
+
+  fetchAI();
+}, [data, hasFetchedAI]);
 
   const filteredChartData = useMemo(() => {
     if (!data) return [];
@@ -102,7 +140,12 @@ export default function HomePage() {
             />
           </div>
           <div className="xl:col-span-1">
-            <InsightsPanel insight={aiInsights} />
+            <InsightsPanel insight={{
+              title: "Ai Market Summary",
+              summary: aiLoading ? "Generating AI insights..." : aiInsight?.summary || "No data available",
+              trend: aiInsight?.trend || "No data available",
+              risk: aiInsight?.risk || "No data available",
+            }} />
           </div>
         </section>
 
