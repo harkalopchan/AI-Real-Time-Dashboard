@@ -3,10 +3,6 @@ import { MarketChartPoint, MarketData } from "@/types/market";
 const COINGECKO_PRICE_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true&include_24hr_vol=true';
 const COINGECKO_CHART_URL = 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=hourly';
 
-function formatCompactNumber(value: number): string {
-    return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(value);
-}
-
 function formatTimeLabel(timestamp: number): string {
     return new Date(timestamp).toLocaleTimeString([], {
         hour: '2-digit',

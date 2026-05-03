@@ -70,29 +70,6 @@ export default function HomePage() {
     return calculateChartStats(filteredChartData)
   }, [filteredChartData]);
 
-  const aiInsights = useMemo(() => {
-    if (!data) {
-      return {
-        title: "AI Market Summary",
-        summary: "",
-        trend: "",
-        risk: "",
-      };
-    }
-    return {
-      title: "AI Market Summary",
-      summary: data.stats.change24h >= 0
-        ? "BTC is showing positive 24-hour momentum with healthy trading activity."
-        : "BTC is under short-term pressure with negative 24-hour movement.",
-      trend:
-        data.stats.change24h >= 0
-          ? "Short-term trend is upward based on current 24h movement."
-          : "Short-term trend is downward based on current 24h movement.",
-      risk:
-        "This is a rule-based placeholder. Day 4 will replace this with real AI-generated insight.",
-    };
-  }, [data]);
-
   if (loading) {
     <DashboardSkeleton />;
   }

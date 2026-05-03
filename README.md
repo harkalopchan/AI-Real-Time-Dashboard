@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI-Powered Real-Time Market Dashboard
+
+A real-time analytics dashboard built with Next.js, TypeScript, and OpenAI.  
+It displays live BTC market data, generates AI-powered insights, and allows users to ask natural-language questions about dashboard data.
+
+![Trading Dashboard](assets/repository-img.png)
+
+## Features
+
+- Live BTC market data
+- Auto-refreshing market statistics
+- Interactive price chart
+- Time range filtering
+- AI-generated market insights
+- “Ask the Data” conversational AI interface
+- Loading skeletons and error handling
+- Responsive dashboard UI
+
+## Tech Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Recharts
+- OpenAI API
+- CoinGecko API
+- Vercel
+
+## AI Features
+
+The app uses OpenAI through secure Next.js API routes.  
+The API key is never exposed on the client side.
+
+AI is used for:
+
+- Market summary generation
+- Trend explanation
+- Risk notes
+- Conversational Q&A over live dashboard data
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/harkalopchan/AI-Real-Time-Dashboard.git
+cd your-project-name
+npm install
