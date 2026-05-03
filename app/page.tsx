@@ -12,7 +12,7 @@ import { useMarketData } from "@/hooks/useMarketData";
 import { calculateChartStats, filterChartDataByRange, TimeRange } from "@/lib/chart";
 import { buildMetricCards } from "@/lib/market";
 import { AIInsightResponse } from "@/types/ai";
-import { useMemo, useState, useEffect, use } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 export default function HomePage() {
 
@@ -150,7 +150,7 @@ export default function HomePage() {
         </section>
 
         <section className="mt-4">
-          <AskDataPanel />
+          <AskDataPanel data={data} />
         </section>
 
       </div>
