@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { ChatMessage } from "@/types/chat";
+import { MarketData } from "@/types/market";
 
 type Props = {
-    data: string;
+    data: MarketData;
 };
 
 export default function AskDataPanel({ data }: Props) {
