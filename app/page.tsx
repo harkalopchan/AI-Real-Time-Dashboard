@@ -71,7 +71,7 @@ export default function HomePage() {
   }, [filteredChartData]);
 
   if (loading) {
-    <DashboardSkeleton />;
+    return <DashboardSkeleton />;
   }
 
   if (error || !data) {
