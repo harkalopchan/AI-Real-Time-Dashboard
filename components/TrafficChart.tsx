@@ -29,22 +29,25 @@ export default function TrafficChart({ data }: TrafficChartProps) {
         <div>
           <h2 className="text-md lg:text-lg font-semibold text-white">Traffic by Channel</h2>
         </div>
-        <select className="px-3 py-1 text-sm bg-slate-800 border border-slate-700 rounded-md text-slate-300 hover:border-slate-600 transition-colors cursor-pointer">
+        <label htmlFor="traffic-select" className="sr-only">
+          Select traffic metric
+        </label>
+        <select id="traffic-select" className="px-3 py-1 text-sm bg-slate-800 border border-slate-700 rounded-md text-slate-300 hover:border-slate-600 transition-colors cursor-pointer">
           <option>Sessions</option>
           <option>Users</option>
           <option>Revenue</option>
         </select>
       </div>
 
-      <div className="mt-6 h-80 w-full flex items-center justify-center">
-        <ResponsiveContainer width="100%" height={320}>
+      <div className="mt-6 h-75 w-full flex items-center justify-center">
+        <ResponsiveContainer width="100%" height={260}>
           <PieChart>
             <Pie
               data={chartData}
               cx="50%"
               cy="50%"
-              innerRadius={80}
-              outerRadius={120}
+              innerRadius={60}
+              outerRadius={90}
               dataKey="value"
               label={false}
             >
@@ -63,10 +66,10 @@ export default function TrafficChart({ data }: TrafficChartProps) {
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
+      <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
         {chartData.map((item) => (
           <div key={item.name} className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-2 mb-1">
               <div
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: item.color }}

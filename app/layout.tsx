@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AI Real-Time Market Dashboard",
   description: "AI-powered real-time BTC analytics dashboard built with Next.js, TypeScript, and OpenAI.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} bg-slate-950 h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

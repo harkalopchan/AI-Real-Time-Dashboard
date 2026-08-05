@@ -68,8 +68,10 @@ export function buildMetricCards(data: MarketData): MetricCardData[] {
         },
         {
             title: "24h Volume",
-            value: data.stats.volume24h >= 0 ? "Bullish" : "Bearish",
-            change: `${Math.abs(data.stats.volume24h).toFixed(2)}%`,
+            value: `$${data.stats.volume24h.toLocaleString("en-US", {
+                maximumFractionDigits: 0,
+            })}`,
+            change: data.stats.change24h >= 0 ? "Bullish" : "Bearish",
             trend: (data.stats.change24h >= 0 ? "up" : "down") as MetricCardData['trend'],
         },
         {
