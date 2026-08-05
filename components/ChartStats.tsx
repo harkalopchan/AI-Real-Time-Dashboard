@@ -25,7 +25,7 @@ export default function ChartStats({ high, low, avg }: ChartsStatsProps) {
                     <p className="text-xs uppercase tracking-wide text-slate-500">
                         {item.label}
                     </p>
-                    <p className="mt-2 text-lg font-semibold text-white">{item.value}</p>
+                    <p className="mt-2 text-md lg:text-lg font-semibold text-white">{item.value}</p>
                 </div>
             ))}
         </div>

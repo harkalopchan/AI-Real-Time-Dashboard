@@ -15,15 +15,12 @@ export default function PriceChart({className, data, headerRight }: PriceChartPr
         <div className={`rounded-2xl border border-slate-800 bg-slate-900 p-5 ${className || ""}`}>
             <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
-                    <h2 className="text-lg font-semibold text-white">BTC Price Trend</h2>
-                    <p className="text-sm text-slate-400">
-                        Live hourly market data from CoinGecko
-                    </p>
+                    <h2 className="text-md lg:text-lg font-semibold text-white">Revenue Over Time</h2>
                 </div>
                 {headerRight && <div>{headerRight}</div>}
             </div>
             <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height={320}>
                     <LineChart data={data}>
                         <XAxis
                             dataKey="time"
@@ -49,7 +46,7 @@ export default function PriceChart({className, data, headerRight }: PriceChartPr
                             type="monotone"
                             dataKey="price"
                             stroke="#38bdf8"
-                            strokeWidth={3}
+                            strokeWidth={2}
                             dot={false}
                         />
                     </LineChart>

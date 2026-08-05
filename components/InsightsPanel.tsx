@@ -7,7 +7,7 @@ type InsightsPanelProps = {
 export default function InsightsPanel({ insight }: InsightsPanelProps) {
     return (
         <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
-            <h2 className="text-lg font-semibold text-white">{insight.title}</h2>
+            <h2 className="text-md lg:text-lg font-semibold text-white">{insight.title}</h2>
 
             <div className="mt-4 space-y-4">
                 <div>
