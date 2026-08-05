@@ -12,7 +12,7 @@ import Sidebar from "@/components/Sidebar";
 import TrafficChart from "@/components/TrafficChart";
 import { useMarketData } from "@/hooks/useMarketData";
 import { calculateChartStats, filterChartDataByRange, TimeRange } from "@/lib/chart";
-import { buildMetricCards } from "@/lib/market";
+import { buildMetricCards } from "@/lib/marketCards";
 import { AIInsightResponse } from "@/types/ai";
 import { useMemo, useState, useEffect } from "react";
 

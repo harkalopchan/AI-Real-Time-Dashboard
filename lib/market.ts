@@ -1,8 +1,5 @@
 import { MarketChartPoint, MarketData } from "@/types/market";
-import { MetricCardData } from "@/data/dashboard";
-
-const COINGECKO_PRICE_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true&include_24hr_vol=true';
-const COINGECKO_CHART_URL = 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=hourly';
+import { COINGECKO_PRICE_URL, COINGECKO_CHART_URL } from "@/lib/apiConfig";
 
 function formatTimeLabel(timestamp: number): string {
     return new Date(timestamp).toLocaleTimeString([], {
@@ -56,29 +53,3 @@ export async function fetchMarketData(): Promise<MarketData> {
     return { stats, chart };
 }
 
-export function buildMetricCards(data: MarketData): MetricCardData[] {
-    return [
-        {
-            title: "BTC Price",
-            value: `$${data.stats.price.toLocaleString("en-US", {
-                maximumFractionDigits: 0,
-            })}`,
-            change: `${data.stats.change24h >= 0 ? "+" : ""}${data.stats.change24h.toFixed(2)}%`,
-            trend: (data.stats.change24h >= 0 ? "up" : "down") as MetricCardData['trend'],
-        },
-        {
-            title: "24h Volume",
-            value: `$${data.stats.volume24h.toLocaleString("en-US", {
-                maximumFractionDigits: 0,
-            })}`,
-            change: data.stats.change24h >= 0 ? "Bullish" : "Bearish",
-            trend: (data.stats.change24h >= 0 ? "up" : "down") as MetricCardData['trend'],
-        },
-        {
-            title: "Status",
-            value: data.stats.status,
-            change: "Polling",
-            trend: "neutral",
-        },
-    ];
-}
